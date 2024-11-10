@@ -9,6 +9,21 @@ import MusicPlayer from '../components/MusicPlayer.astro';
 const eventDate = '2024-12-07T14:00:00';
 const whatsappNumber = '9612434004';
 const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiago';
+
+const candyImages = [
+  '/1.png',
+  '/2.png',
+  '/3.png',
+  '/4.png',
+  '/5.png',
+  '/6.png',
+  '/7.png',
+  '/8.png',
+  '/9.png',
+  '/10.png',
+  '/11.png',
+  '/12.png'
+];
 ---
 
 <Layout title="Fiesta Mágica de Carlos Santiago - ¡Estás Invitado!">
@@ -32,7 +47,8 @@ const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiag
         </div>
 
         <!-- Video Container with Enhanced Animation -->
-        <div class="max-w-3xl mx-auto mb-16 aspect-video bg-wonka-purple/30 rounded-lg shadow-magical overflow-hidden transform hover:scale-105 transition-transform duration-500 group">
+        <!-- Video Container - Now Vertical -->
+        <div class="max-w-md mx-auto mb-16 aspect-[9/16] bg-wonka-purple/30 rounded-lg shadow-magical overflow-hidden transform hover:scale-105 transition-transform duration-500 group">
           <div class="w-full h-full flex items-center justify-center bg-gradient-to-r from-wonka-purple/20 via-wonka-gold/10 to-wonka-purple/20 group-hover:scale-110 transition-transform duration-700">
             <div class="text-center">
               <div class="text-6xl mb-4 animate-bounce">🎬</div>
@@ -49,7 +65,11 @@ const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiag
         <div class="candy-container">
           {Array.from({ length: 10 }).map((_, i) => (
             <div class={`floating-candy candy-${i + 1}`}>
-              {['🍫', '🍭', '🍬'][Math.floor(Math.random() * 3)]}
+              <img 
+                src={candyImages[i % candyImages.length]} 
+                alt="candy" 
+                class="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20"
+              />
             </div>
           ))}
         </div>
@@ -153,13 +173,13 @@ const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiag
     position: absolute;
     width: 100%;
     height: 100%;
+    pointer-events: none;
   }
 
   .floating-candy {
     position: absolute;
-    font-size: 1.5rem;
+    opacity: 0;
     animation: float-candy 15s linear infinite;
-    opacity: 0.6;
   }
 
   @keyframes float-candy {
@@ -167,14 +187,14 @@ const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiag
       transform: translateY(100vh) rotate(0deg);
       opacity: 0;
     }
-    10% {
-      opacity: 0.6;
+    5% {
+      opacity: 0.8;
     }
-    90% {
-      opacity: 0.6;
+    95% {
+      opacity: 0.8;
     }
     100% {
-      transform: translateY(-100px) rotate(360deg);
+      transform: translateY(-20vh) rotate(360deg);
       opacity: 0;
     }
   }

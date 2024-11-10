@@ -1,23 +1,34 @@
 ---
+const candyImages = [
+  '/1.png',
+  '/9.png',
+  '/10.png',
+  '/12.png'
+];
 ---
 
 <footer class="bg-wonka-purple/95 text-white py-8 border-t-4 border-wonka-gold/20">
-    <div class="container mx-auto px-4">
-      <div class="text-center">
-        <p class="text-wonka-gold font-berkshire text-xl mb-4">SantiFest 2024</p>
-        <p class="text-sm opacity-90 hover:opacity-100 transition-opacity duration-300">
-            Hecho con <span class="text-pink-400">💖</span> y <span class="text-amber-800">☕</span> por <a href="https://www.instagram.com/jrgmrc.hr/" target="_blank" class="underline bold">JMHR</a>
-        </p>
-      </div>
-      
-      <div class="mt-8 flex justify-center space-x-6">
-        <div class="candy-animation">🍫</div>
-        <div class="candy-animation delay-75">🍭</div>
-        <div class="candy-animation delay-150">🍬</div>
-        <div class="candy-animation delay-225">🎪</div>
-      </div>
+  <div class="container mx-auto px-4">
+    <div class="text-center">
+      <p class="text-wonka-gold font-berkshire text-xl mb-4">SantiFest 2024</p>
+      <p class="text-sm opacity-90 hover:opacity-100 transition-opacity duration-300">
+          Hecho con <span class="text-pink-400">💖</span> y <span class="text-amber-800">☕</span> por <a href="https://www.instagram.com/jrgmrc.hr/" target="_blank" class="underline bold">JMHR</a>
+      </p>
     </div>
-  </footer>
+    
+    <div class="mt-8 flex justify-center space-x-6">
+      {candyImages.slice(0, 4).map((candy, index) => (
+        <div class={`candy-animation delay-${index * 75}`}>
+          <img 
+            src={candy} 
+            alt="candy" 
+            class="w-8 h-8 md:w-10 md:h-10"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</footer>
   
   <style>
     .candy-animation {
