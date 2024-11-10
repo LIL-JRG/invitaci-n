@@ -1,0 +1,60 @@
+---
+---
+
+<div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-wonka-purple">
+  <div class="text-center">
+    <div class="golden-ticket cursor-pointer transform hover:scale-105 transition-transform duration-300">
+      <div class="bg-gradient-to-r from-wonka-gold via-yellow-200 to-wonka-gold p-8 rounded-lg border-4 border-wonka-purple shadow-2xl max-w-md">
+        <h1 class="font-berkshire text-4xl text-wonka-purple mb-4">Boleto Dorado</h1>
+        <p class="text-wonka-purple text-xl mb-4">¡Has encontrado un Boleto Dorado!</p>
+        <button id="open-invitation" class="bg-wonka-purple text-wonka-gold px-8 py-3 rounded-full hover:bg-wonka-purple/80 transition-all duration-300 font-berkshire text-xl">
+          Abrir Invitación
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const preloader = document.getElementById('preloader');
+  const openButton = document.getElementById('open-invitation');
+
+  openButton?.addEventListener('click', () => {
+    preloader?.classList.add('fade-out');
+    setTimeout(() => {
+      preloader?.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }, 1000);
+  });
+
+  // Prevent scrolling when preloader is visible
+  document.body.classList.add('overflow-hidden');
+</script>
+
+<style>
+  .fade-out {
+    animation: fadeOut 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .golden-ticket {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+</style>

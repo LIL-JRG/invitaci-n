@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CountdownTimer from '../components/CountdownTimer.astro';
+import Preloader from '../components/Preloader.astro';
+import Schedule from '../components/Schedule.astro';
+import Footer from '../components/Footer.astro';
+import MusicPlayer from '../components/MusicPlayer.astro';
+
+const eventDate = '2024-12-07T14:00:00';
+const whatsappNumber = '9612434004';
+const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiago';
+---
+
+<Layout title="Fiesta Mágica de Carlos Santiago - ¡Estás Invitado!">
+  <Preloader />
+  <MusicPlayer />
+  
+  <main class="opacity-100 transition-opacity duration-500 pt-16">
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen relative flex items-center justify-center overflow-hidden pt-12">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-wonka-purple/70 to-wonka-purple/50 backdrop-blur-sm"></div>
+      </div>
+      
+      <div class="relative container mx-auto px-4 text-center text-white">
+        <div class="mb-16 transform hover:scale-105 transition-transform duration-500">
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-berkshire mb-6 text-wonka-gold animate-float glow-text pt-12">
+            La Fiesta Mágica de Carlos Santiago
+          </h1>
+          <p class="text-2xl md:text-3xl mb-4 font-berkshire text-wonka-gold glow-text">¡5 Años de Dulce Magia!</p>
+          <p class="text-xl md:text-2xl text-white/90">Únete a una tarde mágica de pura imaginación</p>
+        </div>
+
+        <!-- Video Container with Enhanced Animation -->
+        <div class="max-w-3xl mx-auto mb-16 aspect-video bg-wonka-purple/30 rounded-lg shadow-magical overflow-hidden transform hover:scale-105 transition-transform duration-500 group">
+          <div class="w-full h-full flex items-center justify-center bg-gradient-to-r from-wonka-purple/20 via-wonka-gold/10 to-wonka-purple/20 group-hover:scale-110 transition-transform duration-700">
+            <div class="text-center">
+              <div class="text-6xl mb-4 animate-bounce">🎬</div>
+              <p class="text-wonka-gold font-berkshire text-2xl glow-text">Video...</p>
+            </div>
+          </div>
+        </div>
+
+        <CountdownTimer targetDate={eventDate} />
+      </div>
+
+      <!-- Floating Candies Animation -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="candy-container">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div class={`floating-candy candy-${i + 1}`}>
+              {['🍫', '🍭', '🍬'][Math.floor(Math.random() * 3)]}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-12 relative overflow-hidden bg-gradient-to-b from-wonka-purple/5 to-wonka-purple/10">
+      <Schedule />
+    </section>
+
+    <!-- Venue Section with Enhanced Interactivity -->
+    <section id="venue" class="py-12 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-wonka-purple/5 to-wonka-purple/10"></div>
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-4xl mx-auto fade-in">
+          <h2 class="text-3xl md:text-4xl text-center text-wonka-purple mb-8 font-berkshire glow-text">El Lugar de la Magia</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white/90 p-8 rounded-lg shadow-magical transform hover:scale-105 transition-transform duration-500 group">
+              <div class="space-y-6 font-lora">
+                <p class="text-lg">
+                  <strong class="text-wonka-purple group-hover:text-wonka-gold transition-colors">Lugar:</strong> Glück Salón de Eventos Jardín
+                   <br>
+                  <strong class="text-wonka-purple group-hover:text-wonka-gold transition-colors">Fecha:</strong> 07 de Diciembre, 2024
+                  <br>
+                  <strong class="text-wonka-purple group-hover:text-wonka-gold transition-colors">Hora:</strong> 2:00 PM
+                </p>
+                <div class="pt-4">
+                  <a 
+                    href="https://maps.app.goo.gl/CaQNf1sr6UtYdPVu5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-wonka-purple text-white px-6 py-3 rounded-full hover:bg-wonka-gold hover:text-wonka-purple transition-all duration-300 hover:scale-105 shadow-magical group"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Ver ubicación en Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="h-[300px] md:h-full rounded-lg overflow-hidden shadow-magical transform hover:scale-105 transition-transform duration-500">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d675.4098285379104!2d-93.14486814425274!3d16.74206539929476!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd9a920781443%3A0xcad4259efc22e8c0!2zR2zDvGNrIFtTYWzDs24gZGUgRXZlbnRvc10!5e0!3m2!1ses!2smx!4v1731156109872!5m2!1ses!2smx"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-full"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Section with Enhanced Animation -->
+    <section id="rsvp" class="py-16 relative overflow-hidden bg-gradient-to-b from-wonka-purple/10 to-wonka-purple/5">
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-3xl md:text-4xl text-center text-wonka-purple mb-8 font-berkshire glow-text">Confirma tu Asistencia</h2>
+          <div class="bg-white/95 p-8 rounded-lg shadow-magical text-center fade-in transform hover:scale-105 transition-transform duration-500">
+            <p class="text-lg mb-8 text-wonka-purple/90">¡No te pierdas esta mágica celebración! Confirma tu asistencia ahora</p>
+            <div class="space-y-6">
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 bg-wonka-purple text-white px-8 py-4 rounded-full hover:bg-wonka-gold hover:text-wonka-purple transition-all duration-300 font-berkshire text-lg hover:scale-105 shadow-magical group"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                Confirmar por WhatsApp
+              </a>
+              <p class="text-sm text-wonka-purple/70">Al confirmar, recibirás más detalles sobre la celebración</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .glow-text {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+
+  .shadow-magical {
+    box-shadow: 0 0 15px rgba(93, 29, 136, 0.3);
+  }
+
+  .candy-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .floating-candy {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: float-candy 15s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes float-candy {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-100px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .candy-1 { left: 10%; animation-delay: 0s; }
+  .candy-2 { left: 20%; animation-delay: 2s; }
+  .candy-3 { left: 30%; animation-delay: 4s; }
+  .candy-4 { left: 40%; animation-delay: 6s; }
+  .candy-5 { left: 50%; animation-delay: 8s; }
+  .candy-6 { left: 60%; animation-delay: 10s; }
+  .candy-7 { left: 70%; animation-delay: 12s; }
+  .candy-8 { left: 80%; animation-delay: 14s; }
+  .candy-9 { left: 90%; animation-delay: 16s; }
+  .candy-10 { left: 95%; animation-delay: 18s; }
+
+  main {
+    background-color: #FDF6E3;
+    background-image: 
+      radial-gradient(circle at 100% 150%, #FDF6E3 24%, white 24%, white 28%, #FDF6E3 28%, #FDF6E3 36%, white 36%, white 40%, transparent 40%, transparent),
+      radial-gradient(circle at 0    150%, #FDF6E3 24%, white 24%, white 28%, #FDF6E3 28%, #FDF6E3 36%, white 36%, white 40%, transparent 40%, transparent),
+      radial-gradient(circle at 50%  100%, white 10%, #FDF6E3 10%, #FDF6E3 23%, white 23%, white 30%, #FDF6E3 30%, #FDF6E3 43%, white 43%, white 50%, #FDF6E3 50%, #FDF6E3 63%, white 63%, white 71%, transparent 71%, transparent),
+      radial-gradient(circle at 100% 50%, white 5%, #FDF6E3 5%, #FDF6E3 15%, white 15%, white 20%, #FDF6E3 20%, #FDF6E3 29%, white 29%, white 34%, #FDF6E3 34%, #FDF6E3 44%, white 44%, white 49%, transparent 49%, transparent),
+      radial-gradient(circle at 0    50%, white 5%, #FDF6E3 5%, #FDF6E3 15%, white 15%, white 20%, #FDF6E3 20%, #FDF6E3 29%, white 29%, white 34%, #FDF6E3 34%, #FDF6E3 44%, white 44%, white 49%, transparent 49%, transparent);
+    background-size: 100px 50px;
+  }
+</style>

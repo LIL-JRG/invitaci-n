@@ -1,0 +1,57 @@
+---
+import '@fontsource/berkshire-swash';
+import '@fontsource/lora';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Willy Wonka Themed Event Invitation" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-wonka-purple/10 text-wonka-purple">
+    <Navigation />
+    <slot />
+    <script>
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Initialize animations
+      gsap.utils.toArray('.fade-in').forEach((element: any) => {
+        gsap.from(element, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Lora', serif;
+    background: #FDF6E3;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Berkshire Swash', cursive;
+  }
+</style>

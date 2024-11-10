@@ -1,0 +1,49 @@
+---
+---
+
+<div id="envelope" class="relative w-full max-w-2xl mx-auto cursor-pointer perspective-1000">
+  <div class="envelope-front bg-wonka-gold border-4 border-wonka-purple aspect-[4/3] rounded-lg shadow-xl transform transition-transform duration-1000">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <span class="font-berkshire text-3xl text-wonka-purple">Haz clic para abrir</span>
+    </div>
+  </div>
+  <div class="envelope-content absolute inset-0 bg-white rounded-lg p-8 transform rotate-x-180 backface-hidden transition-transform duration-1000">
+    <div class="text-center">
+      <h2 class="font-berkshire text-4xl text-wonka-purple mb-4">¡Estás Invitado!</h2>
+      <p class="text-xl mb-6">A una Celebración Wonka-tástica</p>
+      <button id="continue-btn" class="bg-wonka-purple text-white px-6 py-2 rounded-full hover:bg-wonka-purple/80 transition-colors">
+        Continuar a la Invitación
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-x-180 {
+    transform: rotateX(180deg);
+  }
+</style>
+
+<script>
+  const envelope = document.getElementById('envelope');
+  const continueBtn = document.getElementById('continue-btn');
+  let isOpen = false;
+
+  envelope?.addEventListener('click', () => {
+    if (!isOpen) {
+      envelope.querySelector('.envelope-front')?.classList.add('rotate-x-180');
+      envelope.querySelector('.envelope-content')?.classList.remove('rotate-x-180');
+      isOpen = true;
+    }
+  });
+
+  continueBtn?.addEventListener('click', () => {
+    document.querySelector('#hero')?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>

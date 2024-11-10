@@ -1,0 +1,68 @@
+---
+interface Props {
+  targetDate: string;
+}
+
+const { targetDate } = Astro.props;
+---
+
+<div class="countdown-timer bg-wonka-purple/20 rounded-lg p-6 backdrop-blur-sm transform hover:scale-105 transition-transform duration-500 mb-8">
+  <p class="text-2xl md:text-3xl mb-4 font-berkshire text-wonka-gold glow-text">Ya solo faltan...</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+    <div class="bg-wonka-purple/80 rounded-lg p-4 text-white shadow-magical">
+      <span id="days" class="block text-4xl font-berkshire text-wonka-gold glow-text">00</span>
+      <span class="text-sm">Días</span>
+    </div>
+    <div class="bg-wonka-purple/80 rounded-lg p-4 text-white shadow-magical">
+      <span id="hours" class="block text-4xl font-berkshire text-wonka-gold glow-text">00</span>
+      <span class="text-sm">Horas</span>
+    </div>
+    <div class="bg-wonka-purple/80 rounded-lg p-4 text-white shadow-magical">
+      <span id="minutes" class="block text-4xl font-berkshire text-wonka-gold glow-text">00</span>
+      <span class="text-sm">Minutos</span>
+    </div>
+    <div class="bg-wonka-purple/80 rounded-lg p-4 text-white shadow-magical">
+      <span id="seconds" class="block text-4xl font-berkshire text-wonka-gold glow-text">00</span>
+      <span class="text-sm">Segundos</span>
+    </div>
+  </div>
+  <p class="text-2xl md:text-3xl p-4 font-berkshire text-wonka-gold glow-text mt-10">Para mi celebración</p>
+</div>
+
+<style>
+  .glow-text {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+
+  .shadow-magical {
+    box-shadow: 0 0 15px rgba(93, 29, 136, 0.3);
+  }
+</style>
+
+<script define:vars={{ targetDate }}>
+  function updateCountdown() {
+    const target = new Date(targetDate).getTime();
+    const now = new Date().getTime();
+    const difference = target - now;
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+    if (difference < 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+    }
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>

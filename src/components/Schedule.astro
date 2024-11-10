@@ -1,0 +1,94 @@
+---
+interface Event {
+  time: string;
+  activity: string;
+  icon: string;
+  description?: string;
+}
+
+const schedule: Event[] = [
+  {
+    time: "14:00",
+    activity: "Actividad",
+    icon: "🎪",
+    description: "Descripción"
+  },
+  {
+    time: "14:30",
+    activity: "Actividad",
+    icon: "🎩",
+    description: "Descripción"
+  },
+  {
+    time: "15:30",
+    activity: "Actividad",
+    icon: "🍫",
+    description: "Descripción"
+  },
+  {
+    time: "16:30",
+    activity: "Actividad",
+    icon: "🎮",
+    description: "Descripción"
+  },
+  {
+    time: "17:30",
+    activity: "Actividad",
+    icon: "🎂",
+    description: "Descripción"
+  },
+  {
+    time: "18:30",
+    activity: "Actividad",
+    icon: "👋",
+    description: "Descripción"
+  }
+];
+---
+
+<div class="max-w-4xl mx-auto px-4 py-12">
+  <h2 class="text-3xl md:text-4xl text-center text-wonka-purple mb-12 font-berkshire glow-text">Cronograma Mágico</h2>
+  
+  <div class="relative">
+    <div class="absolute left-1/2 -ml-0.5 w-0.5 h-full bg-gradient-to-b from-wonka-purple via-wonka-gold to-wonka-purple rounded"></div>
+    
+    <div class="space-y-8">
+      {schedule.map((event, index) => (
+        <div class={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} fade-in`}>
+          <div class="flex-1"></div>
+          <div class="absolute left-1/2 -ml-4 w-8 h-8 bg-wonka-purple rounded-full flex items-center justify-center shadow-magical z-10 animate-bounce">
+            <span class="text-lg" role="img" aria-label={event.activity}>{event.icon}</span>
+          </div>
+          <div class="flex-1">
+            <div class={`mx-12 bg-white/90 p-6 rounded-lg shadow-magical transform hover:scale-105 transition-all duration-300 ${index % 2 === 0 ? 'text-right' : 'text-left'} hover:bg-gradient-to-r hover:from-white hover:to-wonka-gold/10`}>
+              <div class="font-berkshire text-wonka-purple text-2xl mb-2">{event.time}</div>
+              <div class="text-gray-800 font-semibold mb-1">{event.activity}</div>
+              {event.description && (
+                <div class="text-gray-600 text-sm">{event.description}</div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .shadow-magical {
+    box-shadow: 0 0 15px rgba(93, 29, 136, 0.3);
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

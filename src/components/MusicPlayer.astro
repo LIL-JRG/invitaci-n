@@ -1,0 +1,134 @@
+---
+---
+
+<div class="fixed bottom-4 right-4 z-50 bg-wonka-purple/90 rounded-full p-3 shadow-magical backdrop-blur-sm">
+    <button
+      id="musicToggle"
+      class="text-wonka-gold hover:text-wonka-yellow transition-colors duration-300 focus:outline-none"
+      aria-label="Controlar música de fondo"
+    >
+      <div class="relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 music-on" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 music-off hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+        </svg>
+      </div>
+    </button>
+    <audio id="bgMusic" loop preload="none">
+      <source src="/music/pure-imagination.mp3" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
+  
+  <script>
+    class MusicController {
+      private audio: HTMLAudioElement;
+      private musicOnIcon: Element | null;
+      private musicOffIcon: Element | null;
+      private isPlaying: boolean = false;
+      private hasInteracted: boolean = false;
+  
+      constructor() {
+        this.audio = document.getElementById('bgMusic') as HTMLAudioElement;
+        this.musicOnIcon = document.querySelector('.music-on');
+        this.musicOffIcon = document.querySelector('.music-off');
+        this.setupEventListeners();
+      }
+  
+      private setupEventListeners() {
+        document.getElementById('musicToggle')?.addEventListener('click', () => this.toggleMusic());
+        
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden && this.isPlaying) {
+            this.pause();
+          } else if (!document.hidden && this.isPlaying) {
+            this.play();
+          }
+        });
+  
+        // Handle first interaction
+        const initMusic = () => {
+          if (!this.hasInteracted) {
+            this.hasInteracted = true;
+            this.toggleMusic();
+            document.removeEventListener('click', initMusic);
+          }
+        };
+        document.addEventListener('click', initMusic, { once: true });
+  
+        // Handle audio ended event
+        this.audio.addEventListener('ended', () => {
+          if (this.isPlaying) {
+            this.play();
+          }
+        });
+      }
+  
+      private async play() {
+        try {
+          await this.audio.play();
+          this.isPlaying = true;
+          this.updateIcons(true);
+        } catch (error) {
+          console.warn('Audio playback failed:', error);
+          this.isPlaying = false;
+          this.updateIcons(false);
+        }
+      }
+  
+      private pause() {
+        this.audio.pause();
+        this.isPlaying = false;
+        this.updateIcons(false);
+      }
+  
+      private updateIcons(playing: boolean) {
+        if (playing) {
+          this.musicOnIcon?.classList.remove('hidden');
+          this.musicOffIcon?.classList.add('hidden');
+        } else {
+          this.musicOnIcon?.classList.add('hidden');
+          this.musicOffIcon?.classList.remove('hidden');
+        }
+      }
+  
+      private async toggleMusic() {
+        if (!this.isPlaying) {
+          await this.play();
+        } else {
+          this.pause();
+        }
+      }
+    }
+  
+    // Initialize the music controller when the DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      new MusicController();
+    });
+  </script>
+  
+  <style>
+    .shadow-magical {
+      box-shadow: 0 0 15px rgba(93, 29, 136, 0.3);
+    }
+  
+    #musicToggle {
+      animation: pulse 2s infinite;
+    }
+  
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
