@@ -1,12 +1,15 @@
 ---
 ---
 
-<div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-wonka-purple">
-  <div class="text-center">
+<div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
+  <div class="swirl-background-container">
+    <div class="swirl-background"></div>
+  </div>
+  <div class="text-center relative z-10">
     <div class="golden-ticket cursor-pointer transform hover:scale-105 transition-transform duration-300">
       <div class="max-w-md">
-        <button id="open-invitation" class="">
-          <img src="/wonkadorado.png" alt="">
+        <button id="open-invitation">
+          <img src="/wonkadorado.png" alt="Wonka Ticket" class="max-w-full h-auto">
         </button>
       </div>
     </div>
@@ -30,6 +33,31 @@
 </script>
 
 <style>
+  .swirl-background-container {
+    position: absolute;
+    inset: -25%;
+    overflow: hidden;
+  }
+
+  .swirl-background {
+    position: absolute;
+    inset: 0;
+    background-image: url('/background.jpg');
+    background-position: center;
+    background-size: cover;
+    animation: rotateBackground 40s linear infinite;
+    transform-origin: center;
+  }
+
+  @keyframes rotateBackground {
+    0% {
+      transform: rotate(0deg) scale(1.8);
+    }
+    100% {
+      transform: rotate(360deg) scale(1.8);
+    }
+  }
+
   .fade-out {
     animation: fadeOut 1s ease-in-out forwards;
   }
@@ -55,4 +83,6 @@
       transform: translateY(-20px);
     }
   }
-</style>
+</style></content></file>
+<boltAction type="start">
+<command>npm run dev</command>
