@@ -12,16 +12,11 @@ const whatsappMessage = 'Confirmo mi asistencia al cumpleaños de Carlos Santiag
 
 const candyImages = [
   '/candies/1.png',
-  '/candies/2.png',
-  '/candies/3.png',
-  '/candies/4.png',
   '/candies/5.png',
   '/candies/6.png',
   '/candies/7.png',
-  '/candies/8.png',
   '/candies/9.png',
   '/candies/10.png',
-  '/candies/11.png',
   '/candies/12.png'
 ];
 ---
@@ -32,22 +27,42 @@ const candyImages = [
   
   <main class="opacity-100 transition-opacity duration-500">
     <!-- Hero Section -->
-    <section id="hero" class="min-h-screen relative flex items-center justify-center overflow-hidden pt-12">
+    <section id="hero" class="min-h-screen relative flex items-center justify-center overflow-hidden pt-32">
+      <!-- Melting Chocolate Effect -->
+      <div class="absolute top-0 left-0 w-full z-20 pointer-events-none">
+        <img 
+          src="/melting-chocolate.png" 
+          alt="Chocolate derretido" 
+          class="w-full h-auto object-contain"
+        />
+      </div>
+
       <div class="absolute inset-0">
         <div class="absolute inset-0 bg-gradient-to-b from-wonka-purple/70 to-wonka-purple/50 backdrop-blur-sm"></div>
       </div>
       
-      <div class="relative container mx-auto px-4 text-center text-white">
+      <div class="relative container mx-auto px-4 text-center text-white z-10">
         <div class="mb-16 transform hover:scale-105 transition-transform duration-500">
-          <h1 class="text-4xl md:text-6xl lg:text-7xl font-berkshire mb-6 text-wonka-gold animate-float glow-text pt-8">
-            La Fiesta Mágica de Carlos Santiago
-          </h1>
+          <div class="flex items-center justify-center gap-4 md:gap-8 mb-6">
+            <img 
+              src="/candies/8.png" 
+              alt="Lollipop" 
+              class="w-16 h-16 md:w-32 md:h-32"
+            />
+            <h1 class="text-3xl md:text-6xl lg:text-7xl font-berkshire text-wonka-gold animate-float glow-text">
+              La Fiesta Mágica de Carlos Santiago
+            </h1>
+            <img 
+              src="/candies/10.png" 
+              alt="Lollipop" 
+              class="w-16 h-16 md:w-32 md:h-32"
+            />
+          </div>
           <p class="text-2xl md:text-3xl mb-4 font-berkshire text-wonka-gold glow-text">¡5 Años de Dulce Magia!</p>
           <p class="text-xl md:text-2xl text-white/90">Únete a una tarde mágica de pura imaginación</p>
         </div>
 
-        <!-- Video Container with Enhanced Animation -->
-        <!-- Video Container - Now Vertical -->
+        <!-- Video Container -->
         <div class="max-w-md mx-auto mb-16 aspect-[9/16] bg-wonka-purple/30 rounded-lg shadow-magical overflow-hidden transform hover:scale-105 transition-transform duration-500 group">
           <div class="w-full h-full flex items-center justify-center bg-gradient-to-r from-wonka-purple/20 via-wonka-gold/10 to-wonka-purple/20 group-hover:scale-110 transition-transform duration-700">
             <div class="text-center">
@@ -76,12 +91,10 @@ const candyImages = [
       </div>
     </section>
 
-    <!-- Schedule Section -->
     <section id="schedule" class="py-12 relative overflow-hidden bg-gradient-to-b from-wonka-purple/5 to-wonka-purple/10">
       <Schedule />
     </section>
 
-    <!-- Venue Section with Enhanced Interactivity -->
     <section id="venue" class="py-12 relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-b from-wonka-purple/5 to-wonka-purple/10"></div>
       <div class="container mx-auto px-4 relative">
@@ -130,7 +143,6 @@ const candyImages = [
       </div>
     </section>
 
-    <!-- RSVP Section with Enhanced Animation -->
     <section id="rsvp" class="py-16 relative overflow-hidden bg-gradient-to-b from-wonka-purple/10 to-wonka-purple/5">
       <div class="container mx-auto px-4 relative">
         <div class="max-w-2xl mx-auto">
@@ -209,6 +221,32 @@ const candyImages = [
   .candy-8 { left: 80%; animation-delay: 14s; }
   .candy-9 { left: 90%; animation-delay: 16s; }
   .candy-10 { left: 95%; animation-delay: 18s; }
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-slow-reverse {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+
+  .animate-spin-slow-reverse {
+    animation: spin-slow-reverse 12s linear infinite;
+  }
 
   main {
     background-color: #FDF6E3;
