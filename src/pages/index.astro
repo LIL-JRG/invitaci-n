@@ -28,12 +28,12 @@ const candyImages = [
   <main class="opacity-100 transition-opacity duration-500">
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen relative flex items-center justify-center overflow-hidden pt-32">
-      <!-- Melting Chocolate Effect -->
-      <div class="absolute top-0 left-0 w-full z-20 pointer-events-none">
+      <!-- Melting Chocolate Effect - Mobile Only -->
+      <div class="absolute top-0 left-0 w-full z-20 pointer-events-none md:hidden">
         <img 
           src="/melting-chocolate.png" 
           alt="Chocolate derretido" 
-          class="w-full h-auto object-contain"
+          class="w-full h-auto object-contain rotate-180"
         />
       </div>
 
@@ -64,12 +64,15 @@ const candyImages = [
 
         <!-- Video Container -->
         <div class="max-w-md mx-auto mb-16 aspect-[9/16] bg-wonka-purple/30 rounded-lg shadow-magical overflow-hidden transform hover:scale-105 transition-transform duration-500 group">
-          <div class="w-full h-full flex items-center justify-center bg-gradient-to-r from-wonka-purple/20 via-wonka-gold/10 to-wonka-purple/20 group-hover:scale-110 transition-transform duration-700">
-            <div class="text-center">
-              <div class="text-6xl mb-4 animate-bounce">🎬</div>
-              <p class="text-wonka-gold font-berkshire text-2xl glow-text">Video...</p>
-            </div>
-          </div>
+          <video 
+            class="w-full h-full object-cover"
+            autoplay
+            loop
+            muted
+            playsinline
+          >
+            <source src="/public/video/wonka.MP4" type="video/mp4">
+          </video>
         </div>
 
         <CountdownTimer targetDate={eventDate} />
