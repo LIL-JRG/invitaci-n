@@ -1,6 +1,7 @@
 ---
 import '@fontsource/berkshire-swash';
 import '@fontsource/lora';
+import '@fontsource/playfair-display';
 import Navigation from '../components/Navigation.astro';
 
 interface Props {
@@ -42,16 +43,52 @@ const { title } = Astro.props;
           }
         });
       });
+
+      // Add parallax effect to floating elements
+      gsap.utils.toArray('.parallax').forEach((element: any) => {
+        gsap.to(element, {
+          y: -50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: element,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+          }
+        });
+      });
     </script>
   </body>
 </html>
 
 <style is:global>
   html {
-    font-family: 'Lora', serif;
+    font-family: 'Alice', serif;
     background: #FDF6E3;
   }
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-wonka {
     font-family: 'Berkshire Swash', cursive;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1e6ff;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #5D1D88;
+    border-radius: 6px;
+    border: 3px solid #f1e6ff;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4a1770;
   }
 </style>
