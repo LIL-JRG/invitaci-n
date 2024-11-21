@@ -11,49 +11,49 @@ const schedule: Event[] = [
     time: "15:00",
     activity: "Recepción",
     icon: "🎪",
-    description: "Los invitados son recibidos en la entrada mágica de la fábrica de chocolate con música y decoraciones temáticas."
+    description: "Los invitados son recibidos en la entrada mágica de la fábrica de chocolate."
   },
   {
     time: "16:00",
     activity: "Comida",
     icon: "🍽️",
-    description: "Disfruta de un banquete inspirado en el mundo de Willy Wonka, con platillos creativos y dulces sorpresas."
+    description: "Disfrutarán de un delicioso banquete."
   },
   {
     time: "16:30",
     activity: "Apertura de juegos",
     icon: "🎮",
-    description: "La zona de juegos se abre con actividades como el laberinto de chocolate, carreras de caramelos y mucho más."
+    description: "La zona de juegos se abre con diversas actividades y mucho chocolate."
   },
   {
     time: "17:30",
     activity: "Show",
     icon: "🎭",
-    description: "Un espectáculo lleno de magia, bailes de Oompa Loompas y momentos memorables del universo de Willy Wonka."
+    description: "Un espectáculo lleno de magia, bailes momentos memorables."
   },
   {
     time: "18:30",
     activity: "Pastel y Fotos",
     icon: "📸",
-    description: "El momento especial para cortar el pastel temático y capturar recuerdos mágicos en el set de la fábrica."
+    description: "Serán capturados recuerdos mágicos."
   },
   {
     time: "18:40",
     activity: "Apertura del Candy Bar",
     icon: "🍭",
-    description: "Disfruta de un paraíso dulce con fuentes de chocolate, caramelos únicos y postres deliciosos."
+    description: "Disfruta de un paraíso dulce lleno de caramelos únicos y muchos postres deliciosos."
   },
   {
     time: "18:45",
     activity: "Piñatas",
     icon: "🎉",
-    description: "Rompe piñatas llenas de dulces y sorpresas inspiradas en los personajes y elementos de la película."
+    description: "¡Celebremos con piñatas llenas de dulces y sorpresas!"
   },
   {
     time: "19:30",
     activity: "Merch Store",
     icon: "🛍️",
-    description: "Adquiere recuerdos únicos como playeras, tazas y bolsas con la temática de Willy Wonka."
+    description: "Adquiere recuerdos únicos en la tienda mágica."
   }
 ];
 
@@ -74,10 +74,10 @@ const schedule: Event[] = [
           </div>
           <div class="flex-1">
             <div class={`mx-12 bg-white/90 p-6 rounded-lg shadow-magical transform hover:scale-105 transition-all duration-300 ${index % 2 === 0 ? 'text-right' : 'text-left'} hover:bg-gradient-to-r hover:from-white hover:to-wonka-gold/10`}>
-              <div class="font-berkshire text-wonka-purple text-2xl mb-2">{event.time}</div>
-              <div class="text-gray-800 font-semibold mb-1">{event.activity}</div>
+              <div class="font-berkshire text-wonka-purple text-2xl mb-2 text-center">{event.time}</div>
+              <div class="text-gray-800 font-semibold mb-1 text-center">{event.activity}</div>
               {event.description && (
-                <div class="text-gray-600 text-sm">{event.description}</div>
+                <div class="text-gray-600 text-sm text-center">{event.description}</div>
               )}
             </div>
           </div>
