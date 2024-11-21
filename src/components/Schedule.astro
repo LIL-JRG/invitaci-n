@@ -73,11 +73,11 @@ const schedule: Event[] = [
             <span class="text-lg" role="img" aria-label={event.activity}>{event.icon}</span>
           </div>
           <div class="flex-1">
-            <div class={`mx-12 bg-white/90 p-6 rounded-lg shadow-magical transform hover:scale-105 transition-all duration-300 ${index % 2 === 0 ? 'text-right' : 'text-left'} hover:bg-gradient-to-r hover:from-white hover:to-wonka-gold/10`}>
-              <div class="font-berkshire text-wonka-purple text-2xl mb-2 text-center">{event.time}</div>
-              <div class="text-gray-800 font-semibold mb-1 text-center">{event.activity}</div>
+            <div class={`mx-4 md:mx-12 bg-white/90 p-4 md:p-6 rounded-lg shadow-magical transform hover:scale-105 transition-all duration-300 ${index % 2 === 0 ? 'text-right' : 'text-left'} hover:bg-gradient-to-r hover:from-white hover:to-wonka-gold/10`}>
+              <div class="font-berkshire text-wonka-purple text-xl md:text-2xl mb-2 text-center">{event.time}</div>
+              <div class="text-gray-800 font-semibold text-sm md:text-base mb-1 text-center">{event.activity}</div>
               {event.description && (
-                <div class="text-gray-600 text-sm text-center">{event.description}</div>
+                <div class="text-gray-600 text-xs md:text-sm text-center">{event.description}</div>
               )}
             </div>
           </div>
